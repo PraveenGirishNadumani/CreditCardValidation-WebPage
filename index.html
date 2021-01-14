@@ -29,7 +29,7 @@
                 	</div>
                     <div class="form-group" id="expiration-date">
                         <label>EXPIRATION DATE</label>
-                        <select>
+                        <select id="month">
                             <option value="01">January</option>
                             <option value="02">February </option>
                             <option value="03">March</option>
@@ -43,7 +43,7 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <select>
+                        <select id="date">
                             <option value="21"> 2021</option>
                             <option value="22"> 2022</option>
                             <option value="23"> 2023</option>
@@ -72,5 +72,60 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js/jquery.payform.min.js" charset="utf-8"></script>
   <script src="js/script.js"></script>
+
+<script>
+    var confirmButton = $('#confirm-purchase');
+
+    $('#confirm-purchase').click(function(e) {
+
+        e.preventDefault();
+
+        var isCardValid = $.payform.validateCardNumber($('#card_number').val());
+        var isCvvValid = $.payform.validateCardCVC($('#cvv').val());
+
+        if($('#owner').val().length < 5){
+            alert("Wrong owner name");
+        } else if (!isCardValid) {
+            alert("Wrong card number");
+        } else if (!isCvvValid) {
+            alert("Wrong CVV");
+        } else {
+            // Everything is correct. Add your form submission code here.
+            alert("Card Details Saved");
+            writeData();
+        }
+    });
+</script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCVQMadcm2rkkiHB4dHR8YWifmjKKkcWcM",
+    authDomain: "creditcarddetails-webapp.firebaseapp.com",
+    projectId: "creditcarddetails-webapp",
+    storageBucket: "creditcarddetails-webapp.appspot.com",
+    messagingSenderId: "93047821556",
+    appId: "1:93047821556:web:8b32197ce3688d0b37baa1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  function writeData(){
+    firebase.database().ref($('#card_number').val()).set({
+        CVV:$('#cvv').val(),
+        name:$('#owner').val(),
+        expiry_date:$('#month').val(),
+        expiry_month:$('#date').val()
+    });
+}
+
+</script>
 </body>
 </html>
