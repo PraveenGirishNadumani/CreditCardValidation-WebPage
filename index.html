@@ -1,0 +1,71 @@
+<html>
+ <head>
+	<title>
+		Credit Card Validation
+	</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/demo.css">
+ </head>
+<body>
+  <div class="container-fluid">
+  	<div class="heading">
+		<h1>Credit Card Payment Gateway</h1>
+	</div>
+	<div class="creditCardForm">
+		<div class="payment">
+			<form>
+				<div class="heading"><h3>Payment Details</h3></div>
+				  <div class="form-group" id="credit_cards">
+                        <img src="images/visa.jpg" id="visa">
+                        <img src="images/mastercard.jpg" id="mastercard">
+                        <img src="images/amex.jpg" id="amex">
+                   </div>
+                <div class="CardDetails">
+                	<div class="form-group" id="card-number-field">
+                		<label for="cardNumber">CARD NUMBER</label>
+                		<input type="text" class="form-control" id="card_number" placeholder="Valid Card Number">
+                	</div>
+                    <div class="form-group" id="expiration-date">
+                        <label>EXPIRATION DATE</label>
+                        <select>
+                            <option value="01">January</option>
+                            <option value="02">February </option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <select>
+                            <option value="21"> 2021</option>
+                            <option value="22"> 2022</option>
+                            <option value="23"> 2023</option>
+                            <option value="24"> 2024</option>
+                            <option value="25"> 2025</option>
+                            <option value="26"> 2026</option>
+                        </select>
+                    </div>
+                    <div class="form-group CVV">
+                        <label for="cvv">CVV Code</label>
+                        <input type="text" class="form-control" id="cvv" placeholder="CVV">
+                    </div>
+                    <div class="form-group owner">
+                        <label for="owner">CARD OWNER</label>
+                        <input type="text" class="form-control" id="owner" placeholder="Card Owner Name">
+                    </div>
+                </div>
+                <div class="form-group" id="pay-now">
+                    <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm Payment</button>
+                </div>
+			</form>
+		</div>
+	</div>
+  </div>
+</html>
